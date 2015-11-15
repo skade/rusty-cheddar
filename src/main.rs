@@ -204,6 +204,7 @@ fn retrieve_docstring(a: &ast::Attribute) -> String {
         ast::MetaItem_::MetaNameValue(ref name, ref val) if *name == "doc" => match val.node {
             // Docstring attributes omit the trailing newline.
             ast::Lit_::LitStr(ref docs, _) => docs.to_string() + "\n",
+            // TODO: is this an error?
             _ => String::new(),
         },
         _ => String::new(),
